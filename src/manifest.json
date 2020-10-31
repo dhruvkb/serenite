@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+  "name": "Serenite",
+  "homepage_url": "https://dhruvkb.github.io/",
+  "description": "A minimal to-do list that replaces your new tab page",
+  "default_locale": "en",
+  "permissions": [
+    "<all_urls>",
+    "*://*/*"
+  ],
+  "icons": {
+    "16": "icons/serenite-16.png",
+    "48": "icons/serenite-48.png",
+    "128": "icons/serenite-128.png"
+  },
+  "background": {
+    "scripts": [
+      "js/background.js"
+    ],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_title": "Serenite",
+    "default_icon": {
+      "19": "icons/serenite-19.png",
+      "38": "icons/serenite-38.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "browser_style": true
+  },
+  "chrome_url_overrides": {
+    "newtab": "override.html"
+  }
+}
