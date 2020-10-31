@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Serenite",
+  "name": "__MSG_extName__",
   "homepage_url": "https://dhruvkb.github.io/",
-  "description": "A minimal to-do list that replaces your new tab page",
+  "description": "__MSG_extDescription__",
   "default_locale": "en",
   "permissions": [
     "<all_urls>",
@@ -20,7 +20,7 @@
     "persistent": false
   },
   "browser_action": {
-    "default_title": "Serenite",
+    "default_title": "__MSG_extName__",
     "default_icon": {
       "19": "icons/serenite-19.png",
       "38": "icons/serenite-38.png"

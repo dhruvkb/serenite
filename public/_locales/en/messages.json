@@ -1,6 +1,10 @@
 {
   "extName": {
-    "message": "serenite",
-    "description": ""
+    "message": "Serenite",
+    "description": "The name of the extension"
+  },
+  "extDescription": {
+    "message": "Serenite is a minimal to-do list that replaces your new tab page.",
+    "description": "The description of the extension"
   }
 }
