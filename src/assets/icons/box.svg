@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <g id="box">
+    <rect
+      id="box"
+      x="64"
+      y="64"
+      width="384"
+      height="384"
+      rx="48"
+      ry="48"
+      fill="none"
+      stroke="currentColor"
+      stroke-linejoin="round"
+      stroke-width="32"/>
+  </g>
+</svg>
