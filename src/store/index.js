@@ -8,6 +8,7 @@ import todo from '@/store/modules/todo'
 Vue.use(Vuex)
 
 const vuexLocal = new VuexPersistence({
+  key: 'serenite',
   storage: window.localStorage
 })
 
