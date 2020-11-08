@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title><%= htmlWebpackPlugin.options.title %></title>
-</head>
-<body>
-  <div id="app"></div>
-</body>
+  <head>
+    <!--
+    Made with ❤️ by
+      __   __                                __       __
+     /\ \ /\ \                              /\ \     /\ \
+     \_\ \\ \ \___    _ __   __  __   __  __\ \ \/'\ \ \ \____
+     /'_` \\ \  _ `\ /\`'__\/\ \/\ \ /\ \/\ \\ \ , /_ \ \ '__`\
+    /\ \L\ \\ \ \ \ \\ \ \/ \ \ \_\ \\ \ \_/ |\ \ \\`\ \ \ \L\ \
+    \ \___,_\\ \_\ \_\\ \_\  \ \____/ \ \___/  \ \_\ \_\\ \_,__/
+     \/__,_ / \/_/\/_/ \/_/   \/___/   \/__/    \/_/\/_/ \/___/
+    -->
+
+    <!-- Site title -->
+    <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <!-- Meta information -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover">
+
+    <!-- Icons -->
+    <link rel="icon" href="<%= BASE_URL %>favicon.png">
+
+    <!-- Styling for when JS is disabled -->
+    <noscript>
+      <style>
+        .yesscript {
+          display: none;
+        }
+      </style>
+    </noscript>
+
+    <!-- Additional head stuff will be auto injected here -->
+  </head>
+
+  <body>
+    <div id="app">
+      <noscript>
+        <p>
+          Heartfelt apologies, but Serenite needs JavaScript enabled.
+        </p>
+      </noscript>
+      <div class="yesscript">
+        <p>
+          Please wait...
+        </p>
+      </div>
+    </div>
+
+    <!-- Built files will be auto injected here -->
+  </body>
 </html>
