@@ -1,3 +1,4 @@
 browser.browserAction.onClicked.addListener(() => {
-  console.log('Hello, World!')
+  console.log('Opening Serenite!')
+  browser.tabs.create({ active: true })
 })
