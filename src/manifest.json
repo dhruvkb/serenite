@@ -32,5 +32,9 @@
   },
   "chrome_url_overrides": {
     "newtab": "override.html"
-  }
+  },
+  "web_accessible_resources": [
+    "icons/*.png",
+    "favicon.png"
+  ]
 }
