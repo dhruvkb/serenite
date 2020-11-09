@@ -12,7 +12,9 @@ const getters = {
   labelById: state => id => state.labels[id],
 
   allTasks: state => Object.keys(state.tasks),
-  taskById: state => id => state.tasks[id]
+  taskById: state => id => state.tasks[id],
+
+  pendingTaskCount: (state, getters) => getters.allTasks.filter(id => !getters.taskById(id).isComplete).length
 }
 
 const mutations = {
@@ -42,7 +44,15 @@ const mutations = {
   }
 }
 
-const actions = {}
+const actions = {
+  updateTasks ({ commit, getters }, payload) {
+    commit(payload.mutation, payload.data)
+
+    const count = getters.pendingTaskCount
+    const text = count ? count.toString() : null
+    browser.browserAction.setBadgeText({ text: text })
+  }
+}
 
 export default {
   namespaced: true,
