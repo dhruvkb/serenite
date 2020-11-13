@@ -1,6 +1,6 @@
 <template>
   <svg
-    class="icon"
+    class="serene-icon"
     viewBox="0 0 512 512">
     <use :href="href"/>
   </svg>

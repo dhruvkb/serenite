@@ -1,5 +1,7 @@
 <template>
-  <div class="tab-bar" :style="sereneTabsStyles">
+  <div
+    class="serene-tabs"
+    :style="sereneTabsStyles">
     <button
       v-for="(option, index) in options"
       :key="index"
