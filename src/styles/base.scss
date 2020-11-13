@@ -1,0 +1,22 @@
+@use '~@/styles/tokens/fonts';
+@use '~@/styles/tokens/sizes';
+
+$font-heading: fonts.$sans-serif;
+$font-body:    fonts.$sans-serif;
+
+$size-heading: sizes.$l;
+
+body {
+  font-family: $font-body;
+  font-size: 16px;
+}
+
+@for $level from 1 through 6 {
+  h#{$level} {
+    font-family: $font-heading;
+  }
+}
+
+h1 {
+  font-size: $size-heading;
+}
