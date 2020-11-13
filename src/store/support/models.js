@@ -1,32 +1,27 @@
-const uuid4 = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-  const r = Math.random() * 16 | 0
-  const v = c === 'x' ? r : (r & 0x3 | 0x8)
-  return v.toString(16)
-})
+import colors from '@/styles/exports/colors.scss'
+
+import { uuid4 } from '@/utilities/uuid'
 
 /**
  * Labels are used to group issues into categories.
  */
 export class Label {
   static COLOR_CODES = {
-    berryRed: 'rgb(184, 37, 95)',
-    red: 'rgb(219, 64, 53)',
-    green: 'rgb(41, 148, 56)',
-    teal: 'rgb(21, 143, 173)',
-    skyBlue: 'rgb(20, 170, 245)',
-    grape: 'rgb(136, 77, 255)',
-    violet: 'rgb(175, 56, 235)',
-    lavender: 'rgb(235, 150, 235)',
-    salmon: 'rgb(255, 141, 133)'
+    berry: colors.labelBerry,
+    green: colors.labelGreen,
+    teal: colors.labelTeal,
+    sky: colors.labelSky,
+    grape: colors.labelGrape,
+    violet: colors.labelViolet,
+    lavender: colors.labelLavender,
+    salmon: colors.labelSalmon
   }
 
   static COLOR_NAMES = Object.fromEntries(Object
     .keys(Label.COLOR_CODES)
     .map(colorName => [
       colorName,
-      colorName
-        .replace(/([A-Z])/g, str => ` ${str.toLocaleLowerCase()}`)
-        .replace(/^./, str => str.toLocaleUpperCase())
+      colorName.replace(/^./, str => str.toLocaleUpperCase())
     ])
   )
 
