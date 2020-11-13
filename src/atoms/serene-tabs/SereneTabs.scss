@@ -1,0 +1,74 @@
+@use '~@/styles/tokens/colors';
+@use '~@/styles/tokens/dimensions';
+@use '~@/styles/tokens/durations';
+
+@use '~@/styles/mixins/cell';
+@use '~@/styles/mixins/control';
+
+$dimension-tab:      6em;
+
+$background-tab-bar: colors.$background-darker;
+$background-tab:     colors.$background-lighter;
+
+$color-tab-inactive: colors.$foreground-darker;
+
+.tab-bar {
+  position: relative;
+
+  display: inline-block;
+
+  .tab {
+    @include control.control;
+
+    box-sizing: border-box;
+    width: $dimension-tab;
+
+    padding: dimensions.$s;
+
+    transition-property: color;
+    transition-duration: durations.$m;
+
+    &:not(.is-chosen) {
+      color: $color-tab-inactive;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    box-sizing: border-box;
+    height: 100%;
+  }
+
+  // Tab bar
+  &::before {
+    @include cell.cell(false);
+
+    z-index: -2;
+
+    background-color: $background-tab-bar;
+
+    width: 100%;
+  }
+
+  // Tab
+  &::after {
+    @include cell.cell;
+
+    z-index: -1;
+
+    background-color: $background-tab;
+
+    width: $dimension-tab;
+
+    transform: translateX(calc(var(--tab-bar-index) * 6em));
+
+    transition-property: transform;
+    transition-duration: durations.$m;
+  }
+}
