@@ -6,7 +6,7 @@
       stroke="currentColor"
       stroke-linecap="round"
       stroke-linejoin="round"
-      stroke-width="32"
+      stroke-width="var(--stroke-width, 32px)"
       d="M352 176L217.6 336 160 272"/>
     <rect
       id="box"
@@ -19,6 +19,6 @@
       fill="none"
       stroke="currentColor"
       stroke-linejoin="round"
-      stroke-width="32"/>
+      stroke-width="var(--stroke-width, 32px)"/>
   </g>
 </svg>

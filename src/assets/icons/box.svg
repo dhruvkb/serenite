@@ -11,6 +11,6 @@
       fill="none"
       stroke="currentColor"
       stroke-linejoin="round"
-      stroke-width="32"/>
+      stroke-width="var(--stroke-width, 32px)"/>
   </g>
 </svg>
