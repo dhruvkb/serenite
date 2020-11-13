@@ -1,0 +1,21 @@
+@use '~@/styles/tokens/_colors.scss';
+
+$color-heading:    colors.$foreground-lighter;
+$color-subheading: colors.$foreground-darker;
+
+.serene-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  .heading {
+    color: $color-heading;
+
+    font-weight: bold;
+  }
+
+  .subheading {
+    color: $color-subheading;
+  }
+}
