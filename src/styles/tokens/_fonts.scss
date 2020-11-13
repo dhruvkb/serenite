@@ -1,0 +1,19 @@
+// Symbol fonts by OS
+
+$symbol-mac:         'Apple Color Emoji';
+$symbol-windows:     'Segoe UI Emoji', 'Segoe UI Symbol';
+$symbol-android:     'Noto';
+
+$symbol-os:          $symbol-mac, $symbol-windows, $symbol-android;
+
+// Sans-serif fonts by OS
+
+$sans-serif-mac:     -apple-system, BlinkMacSystemFont, 'Avenir Next', 'Avenir', 'Helvetica Neue', 'Helvetica';
+$sans-serif-windows: 'Segoe UI';
+$sans-serif-android: 'Roboto';
+$sans-serif-linux:   'Cantarell', 'Ubuntu', 'Oxygen';
+$sans-serif-system:  system-ui;
+
+$sans-serif-os:      $sans-serif-mac, $sans-serif-windows, $sans-serif-android, $sans-serif-linux, $sans-serif-system;
+
+$sans-serif:         $sans-serif-os, $symbol-os, sans-serif;
