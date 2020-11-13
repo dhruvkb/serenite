@@ -52,7 +52,7 @@
     },
     computed: {
       /**
-       * Get the classes to apply on the ActionField instance.
+       * Get the classes to apply on the SereneInput instance.
        *
        * @return {Array} an array of classes to apply on the element
        */
