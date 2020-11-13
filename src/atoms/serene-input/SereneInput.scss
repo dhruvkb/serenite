@@ -1,0 +1,83 @@
+@use 'sass:color';
+
+@use '~@/styles/tokens/colors';
+@use '~@/styles/tokens/dimensions';
+@use '~@/styles/tokens/durations';
+
+@use '~@/styles/mixins/cell';
+@use '~@/styles/mixins/control';
+
+$color-background:        colors.$background-darker;
+
+$foreground-placeholder-blur:  #747474; // ~ color.adjust(white, $alpha: -0.6);
+$foreground-placeholder-focus: #a2a2a2; // ~ color.adjust(white, $alpha: -0.4);
+
+.serene-input {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  .field {
+    @include control.control;
+    @include cell.cell(false);
+
+    line-height: 1.5;
+
+    background-color: $color-background;
+    caret-color: currentColor;
+
+    box-sizing: border-box;
+    width: 100%;
+
+    padding: dimensions.$m dimensions.$m dimensions.$m (2*dimensions.$m + dimensions.$icon);
+
+    &::placeholder,
+    & ~ .label {
+      color: $foreground-placeholder-blur;
+
+      transition-property: color;
+      transition-duration: durations.$m;
+    }
+
+    &::placeholder {
+      opacity: 1; // Firefox has a lower opacity in placeholders
+    }
+
+    & ~ .label {
+      position: absolute;
+      left: dimensions.$m;
+
+      pointer-events: none;
+    }
+
+    &:focus {
+      @include cell.cell-active;
+
+      &::placeholder,
+      & ~ .label {
+        color: $foreground-placeholder-focus;
+      }
+    }
+  }
+
+  .enter {
+    opacity: 0;
+
+    position: absolute;
+    right: dimensions.$m;
+
+    transition-property: opacity;
+    transition-duration: durations.$m;
+  }
+
+  &.is-filled {
+    .field ~ .label {
+      color: inherit;
+    }
+
+    .enter {
+      opacity: 1;
+    }
+  }
+}
