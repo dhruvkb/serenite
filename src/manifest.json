@@ -45,7 +45,7 @@
     ]
   },
   "chrome_url_overrides": {
-    "newtab": "override.html"
+    "newtab": "newtab.html"
   },
   "web_accessible_resources": [
     "icons/*.png",

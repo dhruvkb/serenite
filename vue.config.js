@@ -1,8 +1,8 @@
 module.exports = {
   pages: {
-    override: {
-      template: 'public/browser-extension.html',
-      entry: './src/override/main.js',
+    newtab: {
+      template: 'public/newtab.html',
+      entry: './src/newtab/main.js',
       title: 'Serenite'
     }
   },

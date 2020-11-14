@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 import store from '@/store'
 
-import App from '@/override/App.vue'
+import App from '@/newtab/App'
 
 Vue.config.productionTip = false
 
