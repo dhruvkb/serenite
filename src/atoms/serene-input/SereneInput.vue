@@ -54,7 +54,7 @@
     },
     computed: {
       /**
-       * Get the classes to apply on the SereneInput instance.
+       * Get the classes to apply on the text input field.
        *
        * @return {Array} an array of classes to apply on the element
        */
