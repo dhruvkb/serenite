@@ -1,10 +1,11 @@
-$background-darker:  #171717;
+$background-dark:    #171717;
 $background-canvas:  #1f1f1f; // Baseline, used in HTML
-$background-lighter: #282828;
+$background-light:   #282828;
+$background-lighter: #4d4d4d;
 
-$foreground-darker:  #808080;
+$foreground-dark:    #808080;
 $foreground-canvas:  #e2e2e2; // Baseline, used in HTML
-$foreground-lighter: #ffffff;
+$foreground-light:   #ffffff;
 
 // Colors for labels
 
@@ -17,3 +18,7 @@ $label-grape:        #884dff;
 $label-violet:       #af38eb;
 $label-lavender:     #ea96eb;
 $label-salmon:       #ff8d85;
+
+// Contextual colors
+
+$danger:             #ff7f74;
