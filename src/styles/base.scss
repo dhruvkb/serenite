@@ -8,12 +8,16 @@ $size-heading: sizes.$l;
 
 body {
   font-family: $font-body;
-  font-size: 16px;
+  font-size: 14px;
+
+  margin: 0;
 }
 
 @for $level from 1 through 6 {
   h#{$level} {
     font-family: $font-heading;
+
+    margin: 0;
   }
 }
 
