@@ -11,6 +11,8 @@ body {
   font-size: 14px;
 
   margin: 0;
+
+  overflow-x: hidden;
 }
 
 @for $level from 1 through 6 {
