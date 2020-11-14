@@ -7,10 +7,8 @@
 @use '~@/styles/mixins/cell';
 @use '~@/styles/mixins/control';
 
-$color-background:        colors.$background-darker;
-
-$foreground-placeholder-blur:  #747474; // ~ color.adjust(white, $alpha: -0.6);
-$foreground-placeholder-focus: #a2a2a2; // ~ color.adjust(white, $alpha: -0.4);
+$placeholder-color-blur:  #747474; // ~ color.adjust(white, $alpha: -0.6);
+$placeholder-color-focus: #a2a2a2; // ~ color.adjust(white, $alpha: -0.4);
 
 .serene-input {
   position: relative;
@@ -24,7 +22,7 @@ $foreground-placeholder-focus: #a2a2a2; // ~ color.adjust(white, $alpha: -0.4);
 
     line-height: 1.5;
 
-    background-color: $color-background;
+    background-color: colors.$background-dark;
     caret-color: currentColor;
 
     box-sizing: border-box;
@@ -34,7 +32,7 @@ $foreground-placeholder-focus: #a2a2a2; // ~ color.adjust(white, $alpha: -0.4);
 
     &::placeholder,
     & ~ .label {
-      color: $foreground-placeholder-blur;
+      color: $placeholder-color-blur;
 
       transition-property: color;
       transition-duration: durations.$m;
@@ -56,7 +54,7 @@ $foreground-placeholder-focus: #a2a2a2; // ~ color.adjust(white, $alpha: -0.4);
 
       &::placeholder,
       & ~ .label {
-        color: $foreground-placeholder-focus;
+        color: $placeholder-color-blur;
       }
     }
   }
@@ -66,6 +64,8 @@ $foreground-placeholder-focus: #a2a2a2; // ~ color.adjust(white, $alpha: -0.4);
 
     position: absolute;
     right: dimensions.$m;
+
+    color: colors.$foreground-dark;
 
     transition-property: opacity;
     transition-duration: durations.$m;

@@ -14,7 +14,7 @@
     <span
       class="enter"
       title="Press Enter to submit.">
-      <Icon
+      <SereneIcon
         name="enter"
         :path="icons.enter"/>
     </span>
@@ -22,13 +22,15 @@
 </template>
 
 <script>
-  import Icon from '@/atoms/serene-icon/SereneIcon'
+  import SereneIcon from '@/atoms/serene-icon/SereneIcon'
 
   import enter from '@/assets/icons/enter.svg'
 
   export default {
     name: 'SereneInput',
-    components: { Icon },
+    components: {
+      SereneIcon
+    },
     inheritAttrs: false,
     model: {
       prop: 'text',
