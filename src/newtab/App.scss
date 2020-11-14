@@ -1,0 +1,26 @@
+@use '~@/styles/tokens/dimensions';
+
+@use '~@/styles/mixins/motion';
+
+$dimension-motion: 20%;
+$dimension-container: 40em;
+
+.override {
+  @include motion.slide('right', -$dimension-motion, 0, $dimension-motion);
+  @include motion.slide('left', $dimension-motion, 0, -$dimension-motion);
+
+  margin: 5em auto;
+
+  footer {
+    position: fixed;
+    bottom: dimensions.$m;
+
+    text-align: center;
+  }
+
+  &,
+  footer {
+    width: $dimension-container;
+    max-width: calc(100% - 2 * #{dimensions.$m});
+  }
+}

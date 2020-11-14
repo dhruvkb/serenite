@@ -1,0 +1,5 @@
+@use '~@/styles/mixins/page';
+
+.task-page {
+  @include page.page;
+}

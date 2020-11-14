@@ -1,0 +1,5 @@
+@use '~@/styles/mixins/page';
+
+.label-page {
+  @include page.page;
+}
