@@ -1,0 +1,18 @@
+@use '~@/styles/tokens/colors';
+@use '~@/styles/tokens/dimensions';
+@use '~@/styles/tokens/durations';
+
+@use '~@/styles/mixins/control';
+
+.serene-button {
+  @include control.control;
+
+  color: colors.$foreground-dark;
+
+  transition-property: color;
+  transition-duration: durations.$m;
+
+  &:hover {
+    color: var(--serene-button-color-focus, #{colors.$foreground-canvas});
+  }
+}
