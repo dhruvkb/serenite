@@ -1,7 +1,4 @@
-@use '~@/styles/tokens/_colors.scss';
-
-$color-heading:    colors.$foreground-lighter;
-$color-subheading: colors.$foreground-darker;
+@use '~@/styles/tokens/colors';
 
 .serene-header {
   display: flex;
@@ -10,12 +7,12 @@ $color-subheading: colors.$foreground-darker;
   justify-content: space-between;
 
   .heading {
-    color: $color-heading;
+    color: colors.$foreground-light;
 
     font-weight: bold;
   }
 
   .subheading {
-    color: $color-subheading;
+    color: colors.$foreground-dark;
   }
 }

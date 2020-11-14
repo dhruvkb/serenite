@@ -5,12 +5,7 @@
 @use '~@/styles/mixins/cell';
 @use '~@/styles/mixins/control';
 
-$dimension-tab:      6em;
-
-$background-tab-bar: colors.$background-darker;
-$background-tab:     colors.$background-lighter;
-
-$color-tab-inactive: colors.$foreground-darker;
+$dimension-tab: 6em;
 
 .serene-tabs {
   position: relative;
@@ -29,7 +24,7 @@ $color-tab-inactive: colors.$foreground-darker;
     transition-duration: durations.$m;
 
     &:not(.is-chosen) {
-      color: $color-tab-inactive;
+      color: colors.$foreground-dark;
     }
   }
 
@@ -51,7 +46,7 @@ $color-tab-inactive: colors.$foreground-darker;
 
     z-index: -2;
 
-    background-color: $background-tab-bar;
+    background-color: colors.$background-dark;
 
     width: 100%;
   }
@@ -62,7 +57,7 @@ $color-tab-inactive: colors.$foreground-darker;
 
     z-index: -1;
 
-    background-color: $background-tab;
+    background-color: colors.$background-light;
 
     width: $dimension-tab;
 
