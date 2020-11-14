@@ -13,6 +13,6 @@
   transition-duration: durations.$m;
 
   &:hover {
-    color: var(--serene-button-color-focus, #{colors.$foreground-canvas});
+    color: var(--serene-button-color-focus, inherit);
   }
 }
