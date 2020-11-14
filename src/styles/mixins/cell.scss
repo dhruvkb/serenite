@@ -1,0 +1,26 @@
+@use '~@/styles/tokens/dimensions';
+@use '~@/styles/tokens/durations';
+
+$border-darker: hsla(0, 0%, 100%, 0.1);
+$border-lighter: hsla(0, 0%, 100%, 0.2);
+
+$shadow-darker: rgba(0, 0, 0, 0.1);
+$shadow-lighter: rgba(0, 0, 0, 0.2);
+
+@mixin cell($is-raised: true) {
+  border: 1px solid $border-darker;
+  border-radius: dimensions.$xs;
+
+  @if ($is-raised) {
+    box-shadow: 0 10px 10px $shadow-darker, 0 6px 3px $shadow-darker;
+  }
+
+  transition-property: border-color, box-shadow, opacity;
+  transition-duration: durations.$m;
+}
+
+@mixin cell-active($is-raised: true) {
+  border-color: $border-lighter;
+
+  box-shadow: 0 10px 20px $shadow-lighter, 0 6px 6px $shadow-lighter;
+}

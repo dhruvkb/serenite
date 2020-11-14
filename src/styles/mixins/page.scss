@@ -1,0 +1,8 @@
+@use '~@/styles/tokens/dimensions';
+
+@mixin page {
+  display: flex;
+  flex-direction: column;
+
+  gap: dimensions.$l;
+}
