@@ -1,0 +1,22 @@
+@use '~@/styles/tokens/colors';
+@use '~@/styles/tokens/dimensions';
+
+@use '~@/styles/mixins/motion';
+
+.task-list {
+  @include motion.fade;
+
+  .day-off {
+    text-align: center;
+
+    margin-top: dimensions.$l;
+
+    .balance {
+      height: 6em;
+    }
+
+    .advice {
+      color: colors.$foreground-dark;
+    }
+  }
+}
