@@ -1,0 +1,45 @@
+@use '~@/styles/tokens/colors';
+@use '~@/styles/tokens/durations';
+
+@use '~@/styles/mixins/control';
+
+.task-checkbox {
+  @include control.control;
+
+  position: relative;
+
+  .check {
+    opacity: 0;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transition-property: opacity;
+    transition-duration: durations.$m;
+  }
+
+  .box {
+    color: colors.$foreground-dark;
+
+    transition-property: color;
+    transition-duration: durations.$m;
+  }
+
+  &.is-focused,
+  &:focus {
+    .check {
+      opacity: 0.3; // Same as apparent opacity when checked
+    }
+  }
+
+  &.is-checked {
+    .check {
+      opacity: 1; // Multiplied by opacity of checked TaskUnit
+    }
+
+    .box {
+      color: inherit;
+    }
+  }
+}
