@@ -10,7 +10,7 @@
         <TaskUnit
           v-for="task in allTasks"
           :key="task.id"
-          :task-id="task"/>
+          :task="task"/>
       </div>
       <div
         v-else

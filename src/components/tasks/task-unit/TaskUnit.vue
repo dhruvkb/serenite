@@ -1,65 +1,63 @@
 <template>
-  <div
-    class="task-unit"
-    :class="classes">
-    <button
-      class="content"
-      @click="handleClick"
-      @mouseenter="handleMouseEnter"
-      @mouseleave="handleMouseLeave">
-      <TaskCheckbox
-        :is-focused="isMouseOver"
-        :is-checked="task.isComplete"/>
-      <span class="title">
-        {{ task.title }}
-      </span>
-    </button>
-
-    <div class="buttons">
-      <SereneButton
-        class="trash"
-        @click.stop="handleDeleteClick">
-        <SereneIcon
-          name="trash"
-          :path="icons.trash"/>
-      </SereneButton>
-    </div>
+  <div class="task-unit">
+    <transition
+      appear
+      :name="transitionName"
+      mode="out-in">
+      <TaskView
+        v-if="state === 'view'"
+        :task="task"
+        @edit="handleEdit"/>
+      <TaskInput
+        v-else
+        :task="task"
+        @done="handleDone">
+        <template #icon>
+          <SereneIcon
+            name="edit"
+            :path="icons.edit"/>
+        </template>
+      </TaskInput>
+    </transition>
   </div>
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { Task } from '@/store/support/models'
 
-  import SereneButton from '@/atoms/serene-button/SereneButton'
   import SereneIcon from '@/atoms/serene-icon/SereneIcon'
 
-  import TaskCheckbox from '@/components/tasks/task-checkbox/TaskCheckbox'
+  import TaskView from '@/components/tasks/task-view/TaskView'
+  import TaskInput from '@/components/tasks/task-input/TaskInput'
 
-  import box from '@/assets/icons/box.svg'
-  import check from '@/assets/icons/check.svg'
-  import trash from '@/assets/icons/trash.svg'
+  import edit from '@/assets/icons/edit.svg'
 
   export default {
     name: 'TaskUnit',
     components: {
-      TaskCheckbox,
-      SereneButton,
-      SereneIcon
+      SereneIcon,
+
+      TaskInput,
+      TaskView
     },
     data () {
       return {
-        isMouseOver: false,
+        state: 'view',
+        states: [
+          'view',
+          'edit'
+        ],
+
+        transitionName: 'flip-up',
+
         icons: {
-          box,
-          check,
-          trash
+          edit
         }
       }
     },
     props: {
-      taskId: {
-        type: String,
-        required: true
+      task: {
+        type: Task
       }
     },
     computed: {
@@ -69,63 +67,30 @@
             'is-complete': this.task.isComplete
           }
         ]
-      },
-      /**
-       * Get the task corresponding to the passed ID.
-       */
-      task () {
-        return this.taskById(this.taskId)
-      },
-
-      ...mapGetters('todo', [
-        'taskById'
-      ])
+      }
+    },
+    watch: {
+      state (newValue, oldValue) {
+        const baseTransitionName = 'flip'
+        if (this.states.indexOf(newValue) > this.states.indexOf(oldValue)) {
+          this.transitionName = `${baseTransitionName}-up`
+        } else {
+          this.transitionName = `${baseTransitionName}-down`
+        }
+      }
     },
     methods: {
-      /**
-       * Invert the attribute describing whether the task has been completed.
-       */
-      toggleTaskCompletion () {
-        this.updateTasks({
-          mutation: 'setTaskCompletion',
-          data: {
-            taskAttrs: {
-              id: this.task.id,
-              isComplete: !this.task.isComplete
-            }
-          }
-        })
+      handleDone () {
+        this.state = 'view'
       },
-      /**
-       * Remove the task altogether.
-       */
-      removeTask () {
-        this.updateTasks({
-          mutation: 'removeTask',
-          data: {
-            taskAttrs: {
-              id: this.task.id
-            }
-          }
-        })
-      },
-
-      handleClick () {
-        this.toggleTaskCompletion()
-      },
-      handleDeleteClick () {
-        this.removeTask()
-      },
-      handleMouseEnter () {
-        this.isMouseOver = true
-      },
-      handleMouseLeave () {
-        this.isMouseOver = false
-      },
-
-      ...mapActions('todo', [
-        'updateTasks'
-      ])
+      handleEdit () {
+        this.state = 'edit'
+      }
+    },
+    created () {
+      if (this.task === undefined) {
+        this.state = 'edit'
+      }
     }
   }
 </script>

@@ -1,65 +1,12 @@
-@use '~@/styles/tokens/colors';
 @use '~@/styles/tokens/dimensions';
-@use '~@/styles/tokens/durations';
-@use '~@/styles/tokens/sizes';
 
-@use '~@/styles/mixins/cell';
-@use '~@/styles/mixins/control';
-
-$color-task-unit: colors.$background-light;
+@use '~@/styles/mixins/motion';
 
 .task-unit {
-  @include cell.cell;
+  @include motion.flip('up', 90deg, 0, -90deg);
+  @include motion.flip('down', -90deg, 0, 90deg);
 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  background-color: $color-task-unit;
-
-  box-sizing: border-box;
-  width: 100%;
-
-  .content {
-    @include control.control; // Reset must appear before styles
-  }
-
-  .content,
-  .buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    gap: dimensions.$m;
-
-    padding: dimensions.$m;
-  }
-
-  .content {
-    flex-grow: 1;
-  }
-
-  .buttons {
-    .trash {
-      #{--serene-button-color-focus}: colors.$danger;
-    }
-  }
-
-  &.is-complete {
-    @include cell.cell(false);
-
-    opacity: 0.3;
-
-    .title {
-      text-decoration: line-through;
-    }
-  }
-
-  &:not(.is-complete) {
-    &:hover {
-      @include cell.cell-active;
-    }
-  }
+  perspective: 30em;
 
   &:not(:first-child) {
     margin-top: dimensions.$s;
