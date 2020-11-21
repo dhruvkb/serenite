@@ -44,24 +44,3 @@
     transition-duration: durations.$m;
   }
 }
-
-@mixin flip($name, $leave, $mid, $enter) {
-  .flip-#{$name}-enter {
-    transform: rotateX($enter);
-  }
-
-  .flip-#{$name}-enter-to,
-  .flip-#{$name}-leave {
-    transform: rotateX($mid);
-  }
-
-  .flip-#{$name}-leave-to {
-    transform: rotateX($leave);
-  }
-
-  .flip-#{$name}-enter-active,
-  .flip-#{$name}-leave-active {
-    transition-property: transform;
-    transition-duration: durations.$m;
-  }
-}
