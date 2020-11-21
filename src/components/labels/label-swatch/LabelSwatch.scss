@@ -1,0 +1,22 @@
+@use '~@/styles/tokens/colors';
+@use '~@/styles/tokens/durations';
+
+@use '~@/styles/mixins/control';
+
+.label-swatch {
+  @include control.control;
+
+  position: relative;
+
+  .box {
+    color: var(--swatch-color);
+  }
+
+  &:focus,
+  &:hover,
+  &.is-checked {
+    .box {
+      --fill: var(--swatch-color);
+    }
+  }
+}
