@@ -1,11 +1,7 @@
 @use '~@/styles/tokens/colors';
 @use '~@/styles/tokens/durations';
 
-@use '~@/styles/mixins/control';
-
 .task-checkbox {
-  @include control.control;
-
   position: relative;
 
   .check {
