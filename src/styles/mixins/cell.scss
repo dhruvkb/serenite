@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @use '~@/styles/tokens/dimensions';
 @use '~@/styles/tokens/durations';
 
@@ -23,4 +25,10 @@ $shadow-lighter: rgba(0, 0, 0, 0.2);
   border-color: $border-lighter;
 
   box-shadow: 0 10px 20px $shadow-lighter, 0 6px 6px $shadow-lighter;
+}
+
+@mixin cell-disabled {
+  border-color: color.scale($border-darker, $alpha: -70%);
+
+  box-shadow: none;
 }
