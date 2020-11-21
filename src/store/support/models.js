@@ -34,18 +34,34 @@ export class Label {
   )
 
   /**
-   * Create a new instance of `Label` with the given name and color name. The
-   * name of the color is the key that can be mapped to the hexadecimal code of
-   * the color.
+   * Create a new instance of `Label` with the given data.
    *
    * @constructor
+   * @param {string} id - the UUID that uniquely identifies the label
    * @param {string} name - the name of the label
    * @param {string} colorName - the name of the color assigned to the label
    */
-  constructor (name, colorName) {
-    this.id = uuid4()
+  constructor ({
+    id = uuid4(),
+    name,
+    colorName
+  }) {
+    this.id = id
     this.name = name
     this.colorName = colorName
+  }
+
+  /**
+   * Get a POJO representation of the data contained in the object.
+   *
+   * @return {Object} a plain representation of the encapsulated data
+   */
+  get pojo () {
+    return {
+      id: this.id,
+      name: this.name,
+      colorName: this.colorName
+    }
   }
 
   /**
@@ -63,9 +79,44 @@ export class Label {
  * A task describes a major goal to be accomplished.
  */
 export class Task {
-  constructor (title) {
-    this.id = uuid4()
+  /**
+   * Create a new instance of `Task` with the given data.
+   *
+   * @constructor
+   * @param {string} id - the UUID that uniquely identifies the task
+   * @param {string} title - the title of the task
+   * @param {boolean} isComplete - whether the task is checked off
+   * @param {number} order - the position or priority of the task
+   * @param {number} timestampCreated - the timestamp when the task was created
+   */
+  constructor ({
+    id = uuid4(),
+    title,
+    isComplete = false,
+    order = 0,
+    timestampCreated = (new Date()).getTime()
+  }) {
+    this.id = id
     this.title = title
-    this.isComplete = false
+    this.isComplete = isComplete
+
+    this.order = order
+    this.timestampCreated = timestampCreated
+  }
+
+  /**
+   * Get a POJO representation of the data contained in the object.
+   *
+   * @return {Object} a plain representation of the encapsulated data
+   */
+  get pojo () {
+    return {
+      id: this.id,
+      title: this.title,
+      isComplete: this.isComplete,
+
+      order: this.order,
+      timestampCreated: this.timestampCreated
+    }
   }
 }
