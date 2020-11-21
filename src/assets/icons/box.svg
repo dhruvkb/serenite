@@ -8,7 +8,7 @@
       height="384"
       rx="48"
       ry="48"
-      fill="none"
+      fill="var(--fill, none)"
       stroke="currentColor"
       stroke-linejoin="round"
       stroke-width="var(--stroke-width, 32px)"/>
