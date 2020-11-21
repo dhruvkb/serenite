@@ -39,7 +39,7 @@
           'Labels'
         ],
 
-        transitionName: ''
+        transitionName: null
       }
     },
     watch: {
