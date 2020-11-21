@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @use '~@/styles/tokens/colors';
 @use '~@/styles/tokens/dimensions';
 @use '~@/styles/tokens/durations';
@@ -6,22 +8,17 @@
 @use '~@/styles/mixins/cell';
 @use '~@/styles/mixins/control';
 
-$color-task-unit: colors.$background-light;
-
-.task-view {
+.serene-card {
   @include cell.cell;
 
   display: flex;
   flex-direction: row;
   align-items: center;
 
-  background-color: $color-task-unit;
-
-  box-sizing: border-box;
-  width: 100%;
+  background-color: colors.$background-light;
 
   .content {
-    @include control.control; // Reset must appear before styles
+    @include control.control;
   }
 
   .content,
@@ -45,17 +42,19 @@ $color-task-unit: colors.$background-light;
     }
   }
 
-  &.is-complete {
-    @include cell.cell(false);
+  &.is-disabled {
+    @include cell.cell-disabled;
 
-    opacity: 0.3;
+    background-color: color.adjust(colors.$background-light, $alpha: -0.7);
 
-    .title {
+    .content {
+      opacity: 0.3;
+
       text-decoration: line-through;
     }
   }
 
-  &:not(.is-complete) {
+  &:not(.is-disabled) {
     &:hover,
     &:focus-within {
       @include cell.cell-active;

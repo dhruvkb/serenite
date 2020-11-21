@@ -1,39 +1,22 @@
 <template>
-  <div
+  <SereneCard
     class="task-view"
-    :class="classes">
-    <button
-      class="content"
-      @click="handleClick"
-      @mouseenter="handleMouseEnter"
-      @focus="handleMouseEnter"
-      @mouseleave="handleMouseLeave"
-      @blur="handleMouseLeave">
-      <TaskCheckbox
-        :is-focused="isMouseOver"
-        :is-checked="task.isComplete"/>
-      <span class="title">
-        {{ task.title }}
-      </span>
-    </button>
-
-    <div class="buttons">
-      <SereneButton
-        class="edit"
-        @click.stop="handleEditClick">
-        <SereneIcon
-          name="edit"
-          :path="icons.edit"/>
-      </SereneButton>
-      <SereneButton
-        class="trash"
-        @click.stop="handleDeleteClick">
-        <SereneIcon
-          name="trash"
-          :path="icons.trash"/>
-      </SereneButton>
-    </div>
-  </div>
+    :class="classes"
+    :is-disabled="task.isComplete"
+    @click="handleClick"
+    @mouseenter="handleMouseEnter"
+    @focus="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
+    @blur="handleMouseLeave"
+    @edit="handleEdit"
+    @delete="handleDelete">
+    <TaskCheckbox
+      :is-focused="isMouseOver"
+      :is-checked="task.isComplete"/>
+    <span class="title">
+      {{ task.title }}
+    </span>
+  </SereneCard>
 </template>
 
 <script>
@@ -41,33 +24,20 @@
 
   import { Task } from '@/store/support/models'
 
-  import SereneButton from '@/atoms/serene-button/SereneButton'
-  import SereneIcon from '@/atoms/serene-icon/SereneIcon'
+  import SereneCard from '@/atoms/serene-card/SereneCard'
 
   import TaskCheckbox from '@/components/tasks/task-checkbox/TaskCheckbox'
-
-  import box from '@/assets/icons/box.svg'
-  import check from '@/assets/icons/check.svg'
-  import edit from '@/assets/icons/edit.svg'
-  import trash from '@/assets/icons/trash.svg'
 
   export default {
     name: 'TaskView',
     components: {
-      SereneButton,
-      SereneIcon,
+      SereneCard,
 
       TaskCheckbox
     },
     data () {
       return {
-        isMouseOver: false,
-        icons: {
-          box,
-          check,
-          edit,
-          trash
-        }
+        isMouseOver: false
       }
     },
     props: {
@@ -117,10 +87,10 @@
       handleClick () {
         this.toggleTaskCompletion()
       },
-      handleEditClick () {
+      handleEdit () {
         this.$emit('edit')
       },
-      handleDeleteClick () {
+      handleDelete () {
         this.deleteTask()
       },
       handleMouseEnter () {
@@ -136,5 +106,3 @@
     }
   }
 </script>
-
-<style scoped lang="scss" src="./TaskView.scss"/>
