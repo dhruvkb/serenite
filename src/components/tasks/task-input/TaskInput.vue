@@ -1,12 +1,13 @@
 <template>
   <SereneInput
     v-model="taskTitle"
+    class="task-input"
     placeholder="Today I will..."
-    @keyup.enter="handleSubmit">
+    @keyup.enter="handleEnter"
+    @keyup.esc="handleEscape">
     <template #icon>
-      <Icon
-        name="rocket"
-        :path="icons.rocket"/>
+      <!-- @slot Icon goes here -->
+      <slot name="icon"/>
     </template>
   </SereneInput>
 </template>
@@ -14,48 +15,88 @@
 <script>
   import { mapActions } from 'vuex'
 
-  import Icon from '@/atoms/serene-icon/SereneIcon'
-  import SereneInput from '@/atoms/serene-input/SereneInput'
+  import { Task } from '@/store/support/models'
 
-  import rocket from '@/assets/icons/rocket.svg'
+  import SereneInput from '@/atoms/serene-input/SereneInput'
 
   export default {
     name: 'TaskInput',
     components: {
-      Icon,
       SereneInput
     },
     data () {
       return {
-        taskTitle: '',
-        icons: {
-          rocket
-        }
+        taskTitle: ''
+      }
+    },
+    props: {
+      /**
+       * _the task to edit using this input field_
+       */
+      task: {
+        type: Task
+      }
+    },
+    computed: {
+      /**
+       * Get whether the input field is linked to a task. The presence of a
+       * linked task determines whether the field is opened in edit mode or
+       * create mode.
+       */
+      isPopulated () {
+        return this.task !== undefined
       }
     },
     methods: {
       /**
-       * Create a task with the title typed into the input field.
+       * If a task is provided, update the given task with the new title typed
+       * into the input field. If not, create a task with the title typed into
+       * the input field.
        */
-      addTask () {
-        this.updateTasks({
-          mutation: 'addTask',
-          data: {
-            taskAttrs: {
-              title: this.taskTitle
-            }
+      performChange () {
+        if (this.taskTitle === '') {
+          return // Do nothing if the field is blank
+        }
+
+        let mutation
+        const data = {
+          taskAttrs: {
+            title: this.taskTitle
           }
+        }
+        if (this.isPopulated) {
+          mutation = 'editTask' // Edit the given task
+          data.taskAttrs.id = this.task.id
+        } else {
+          mutation = 'addTask' // Create a new task
+        }
+
+        this.updateTasks({
+          mutation,
+          data
         })
-        this.taskTitle = '' // Clear field after submission
+
+        if (mutation === 'addTask') {
+          this.taskTitle = '' // Clear field after creating the task
+        }
       },
 
-      handleSubmit () {
-        this.addTask()
+      handleEnter () {
+        this.performChange()
+        this.$emit('done')
+      },
+      handleEscape () {
+        this.$emit('done')
       },
 
       ...mapActions('todo', [
         'updateTasks'
       ])
+    },
+    mounted () {
+      if (this.isPopulated) {
+        this.taskTitle = this.task.title
+      }
     }
   }
 </script>
