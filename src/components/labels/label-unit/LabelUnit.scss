@@ -1,0 +1,11 @@
+@use '~@/styles/tokens/dimensions';
+
+.label-unit {
+  &:not(:first-child) {
+    margin-top: dimensions.$s;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: dimensions.$s;
+  }
+}

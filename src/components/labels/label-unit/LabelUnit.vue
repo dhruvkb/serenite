@@ -1,34 +1,34 @@
 <template>
   <SereneFlip
-    class="task-unit"
+    class="label-unit"
     :is-flipped="isFlipped">
     <template #front>
-      <TaskView
-        :task="task"
+      <LabelView
+        :label="label"
         @edit="handleEdit"/>
     </template>
     <template #back>
-      <TaskInput
-        :task="task"
+      <LabelInput
+        :label="label"
         @done="handleDone">
         <template #icon>
           <SereneIcon
             name="edit"
             :path="icons.edit"/>
         </template>
-      </TaskInput>
+      </LabelInput>
     </template>
   </SereneFlip>
 </template>
 
 <script>
-  import { Task } from '@/store/support/models'
+  import { Label } from '@/store/support/models'
 
   import SereneIcon from '@/atoms/serene-icon/SereneIcon'
   import SereneFlip from '@/atoms/serene-flip/SereneFlip'
 
-  import TaskInput from '@/components/tasks/task-input/TaskInput'
-  import TaskView from '@/components/tasks/task-view/TaskView'
+  import LabelInput from '@/components/labels/label-input/LabelInput'
+  import LabelView from '@/components/labels/label-view/LabelView'
 
   import edit from '@/assets/icons/edit.svg'
 
@@ -38,8 +38,8 @@
       SereneIcon,
       SereneFlip,
 
-      TaskInput,
-      TaskView
+      LabelInput,
+      LabelView
     },
     data () {
       return {
@@ -50,8 +50,8 @@
       }
     },
     props: {
-      task: {
-        type: Task,
+      label: {
+        type: Label,
         required: true
       }
     },
@@ -66,4 +66,4 @@
   }
 </script>
 
-<style scoped lang="scss" src="./TaskUnit.scss"/>
+<style scoped lang="scss" src="./LabelUnit.scss"/>
