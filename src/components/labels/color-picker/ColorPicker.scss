@@ -8,19 +8,4 @@
   align-items: center;
 
   gap: dimensions.$xs;
-
-  .swatch {
-    @include control.control;
-
-    background-color: var(--swatch-color);
-
-    height: dimensions.$icon;
-    width: dimensions.$icon;
-
-    border-radius: dimensions.$inf;
-
-    &.is-selected {
-      border: 2px solid white;
-    }
-  }
 }
