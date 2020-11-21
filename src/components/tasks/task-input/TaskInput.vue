@@ -31,7 +31,7 @@
     },
     props: {
       /**
-       * _the task to edit using this input field_
+       * the task to edit using this input field
        */
       task: {
         type: Task
