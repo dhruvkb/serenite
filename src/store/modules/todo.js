@@ -45,13 +45,13 @@ const baseMutations = {
 
 const mutations = {
   addLabel (state, payload) {
-    baseMutations.add(Label, 'labels', state, payload.taskAttrs)
+    baseMutations.add(Label, 'labels', state, payload.labelAttrs)
   },
   editLabel (state, payload) {
-    baseMutations.edit('labels', state, payload.taskAttrs)
+    baseMutations.edit('labels', state, payload.labelAttrs)
   },
   removeLabel (state, payload) {
-    baseMutations.remove('labels', state, payload.taskAttrs)
+    baseMutations.remove('labels', state, payload.labelAttrs)
   },
 
   addTask (state, payload) {
