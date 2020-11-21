@@ -1,8 +1,10 @@
+@use '~@/styles/tokens/dimensions';
+
 .serene-icon {
   display: block;
 
-  width: 1.5em;
-  height: 1.5em;
+  width: dimensions.$icon;
+  height: dimensions.$icon;
 
   --stroke-width: 32px;
 }
