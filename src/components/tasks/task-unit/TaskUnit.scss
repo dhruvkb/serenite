@@ -1,13 +1,6 @@
 @use '~@/styles/tokens/dimensions';
 
-@use '~@/styles/mixins/motion';
-
 .task-unit {
-  @include motion.flip('up', 90deg, 0, -90deg);
-  @include motion.flip('down', -90deg, 0, 90deg);
-
-  perspective: 30em;
-
   &:not(:first-child) {
     margin-top: dimensions.$s;
   }

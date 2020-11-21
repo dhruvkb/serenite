@@ -1,15 +1,14 @@
 <template>
-  <div class="task-unit">
-    <transition
-      appear
-      :name="transitionName"
-      mode="out-in">
+  <SereneFlip
+    class="task-unit"
+    :is-flipped="isFlipped">
+    <template #front>
       <TaskView
-        v-if="state === 'view'"
         :task="task"
         @edit="handleEdit"/>
+    </template>
+    <template #back>
       <TaskInput
-        v-else
         :task="task"
         @done="handleDone">
         <template #icon>
@@ -18,17 +17,18 @@
             :path="icons.edit"/>
         </template>
       </TaskInput>
-    </transition>
-  </div>
+    </template>
+  </SereneFlip>
 </template>
 
 <script>
   import { Task } from '@/store/support/models'
 
   import SereneIcon from '@/atoms/serene-icon/SereneIcon'
+  import SereneFlip from '@/atoms/serene-flip/SereneFlip'
 
-  import TaskView from '@/components/tasks/task-view/TaskView'
   import TaskInput from '@/components/tasks/task-input/TaskInput'
+  import TaskView from '@/components/tasks/task-view/TaskView'
 
   import edit from '@/assets/icons/edit.svg'
 
@@ -36,20 +36,14 @@
     name: 'TaskUnit',
     components: {
       SereneIcon,
+      SereneFlip,
 
       TaskInput,
       TaskView
     },
     data () {
       return {
-        state: 'view',
-        states: [
-          'view',
-          'edit'
-        ],
-
-        transitionName: 'flip-up',
-
+        isFlipped: false,
         icons: {
           edit
         }
@@ -57,7 +51,8 @@
     },
     props: {
       task: {
-        type: Task
+        type: Task,
+        required: true
       }
     },
     computed: {
@@ -69,27 +64,12 @@
         ]
       }
     },
-    watch: {
-      state (newValue, oldValue) {
-        const baseTransitionName = 'flip'
-        if (this.states.indexOf(newValue) > this.states.indexOf(oldValue)) {
-          this.transitionName = `${baseTransitionName}-up`
-        } else {
-          this.transitionName = `${baseTransitionName}-down`
-        }
-      }
-    },
     methods: {
       handleDone () {
-        this.state = 'view'
+        this.isFlipped = false
       },
       handleEdit () {
-        this.state = 'edit'
-      }
-    },
-    created () {
-      if (this.task === undefined) {
-        this.state = 'edit'
+        this.isFlipped = true
       }
     }
   }
