@@ -25,6 +25,7 @@
     name: 'TaskPage',
     components: {
       SereneIcon,
+
       Today,
       TaskInput,
       TaskList
