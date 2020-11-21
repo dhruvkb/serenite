@@ -57,15 +57,15 @@
     },
     methods: {
       /**
-       * Invert the attribute describing whether the task has been completed.
+       * Set the new completion status of the task.
        */
-      toggleTaskCompletion () {
+      updateTaskIsComplete (isComplete) {
         this.updateTasks({
           mutation: 'editTask',
           data: {
             taskAttrs: {
               id: this.task.id,
-              isComplete: !this.task.isComplete
+              isComplete
             }
           }
         })
@@ -85,7 +85,7 @@
       },
 
       handleClick () {
-        this.toggleTaskCompletion()
+        this.updateTaskIsComplete(!this.isComplete)
       },
       handleEdit () {
         this.$emit('edit')
