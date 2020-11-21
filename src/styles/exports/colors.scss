@@ -1,13 +1,12 @@
 @use '~@/styles/tokens/colors';
 
 :export {
-  labelRed:      colors.$label-red;
-  labelBerry:    colors.$label-berry;
-  labelGreen:    colors.$label-green;
-  labelTeal:     colors.$label-teal;
-  labelSky:      colors.$label-sky;
   labelGrape:    colors.$label-grape;
   labelViolet:   colors.$label-violet;
-  labelLavender: colors.$label-lavender;
+  labelSky:      colors.$label-sky;
+  labelGreen:    colors.$label-green;
   labelSalmon:   colors.$label-salmon;
+  labelOrange:   colors.$label-orange;
+  labelBerry:    colors.$label-berry;
+  labelRed:      colors.$label-red;
 }

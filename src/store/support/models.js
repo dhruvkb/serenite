@@ -11,14 +11,14 @@ export class Label {
    * @enum {string}
    */
   static COLOR_CODES = {
-    berry: colors.labelBerry,
-    green: colors.labelGreen,
-    teal: colors.labelTeal,
-    sky: colors.labelSky,
     grape: colors.labelGrape,
     violet: colors.labelViolet,
-    lavender: colors.labelLavender,
-    salmon: colors.labelSalmon
+    sky: colors.labelSky,
+    green: colors.labelGreen,
+    salmon: colors.labelSalmon,
+    orange: colors.labelOrange,
+    berry: colors.labelBerry,
+    red: colors.labelRed
   }
 
   /**
