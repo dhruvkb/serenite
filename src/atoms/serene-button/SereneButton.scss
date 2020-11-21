@@ -12,7 +12,8 @@
   transition-property: color;
   transition-duration: durations.$m;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--serene-button-color-focus, inherit);
   }
 }
