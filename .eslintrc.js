@@ -12,6 +12,9 @@ module.exports = {
     // TODO: Restore severity to 'error'
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'max-len': ['error', {
+      code: 80
+    }],
     'vue/script-indent': ['error', 2, {
       switchCase: 1,
       baseIndent: 1
