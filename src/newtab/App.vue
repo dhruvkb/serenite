@@ -28,8 +28,14 @@
     components: {
       SereneTabs,
 
-      TaskPage: () => import(/* webpackChunkName: 'task-page' */ '@/views/task-page/TaskPage'),
-      LabelPage: () => import(/* webpackChunkName: 'label-page' */ '@/views/label-page/LabelPage')
+      TaskPage: () => import(
+        /* webpackChunkName: 'task-page' */
+        '@/views/task-page/TaskPage'
+        ),
+      LabelPage: () => import(
+        /* webpackChunkName: 'label-page' */
+        '@/views/label-page/LabelPage'
+        )
     },
     data () {
       return {
