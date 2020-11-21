@@ -25,12 +25,12 @@ export class Label {
    * Enum for color names and their formatted display names
    * @enum {string}
    */
-  static COLOR_NAMES = Object.fromEntries(Object
-    .keys(Label.COLOR_CODES)
-    .map(colorName => [
-      colorName,
-      colorName.replace(/^./, str => str.toLocaleUpperCase())
-    ])
+  static COLOR_NAMES = Object.fromEntries(
+    Object.keys(Label.COLOR_CODES)
+      .map(colorKey => [
+        colorKey,
+        colorKey.replace(/^./, str => str.toLocaleUpperCase())
+      ])
   )
 
   /**
@@ -39,16 +39,16 @@ export class Label {
    * @constructor
    * @param {string} id - the UUID that uniquely identifies the label
    * @param {string} name - the name of the label
-   * @param {string} colorName - the name of the color assigned to the label
+   * @param {string} colorKey - the name of the color assigned to the label
    */
   constructor ({
     id = uuid4(),
     name,
-    colorName
+    colorKey = Object.keys(Label.COLOR_CODES)[0]
   }) {
     this.id = id
     this.name = name
-    this.colorName = colorName
+    this.colorKey = colorKey
   }
 
   /**
@@ -60,18 +60,28 @@ export class Label {
     return {
       id: this.id,
       name: this.name,
-      colorName: this.colorName
+      colorKey: this.colorKey
     }
   }
 
   /**
    * Get the hexadecimal code of the color associated with the label. This is
-   * derived from the `colorName` attribute on the `Label` instance.
+   * derived from the `colorKey` attribute on the `Label` instance.
    *
    * @return {string} the color code associated with the label
    */
   get colorCode () {
-    return Label.COLOR_CODES[this.colorName]
+    return Label.COLOR_CODES[this.colorKey]
+  }
+
+  /**
+   * Get the display name of the color associated with the label. This is
+   * derived from the `colorKey` attribute on the `Label` instance.
+   *
+   * @return {string} the color name associated with the label
+   */
+  get colorName () {
+    return Label.COLOR_NAMES[this.colorKey]
   }
 }
 
