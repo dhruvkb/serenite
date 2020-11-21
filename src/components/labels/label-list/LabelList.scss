@@ -1,0 +1,18 @@
+@use '~@/styles/tokens/colors';
+@use '~@/styles/tokens/dimensions';
+
+@use '~@/styles/mixins/motion';
+
+.label-list {
+  @include motion.fade;
+
+  .no-org {
+    text-align: center;
+
+    margin-top: dimensions.$l;
+
+    .advice {
+      color: colors.$foreground-dark;
+    }
+  }
+}
