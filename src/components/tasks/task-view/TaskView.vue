@@ -103,7 +103,7 @@
       /**
        * Remove the task altogether.
        */
-      removeTask () {
+      deleteTask () {
         this.updateTasks({
           mutation: 'removeTask',
           data: {
@@ -121,7 +121,7 @@
         this.$emit('edit')
       },
       handleDeleteClick () {
-        this.removeTask()
+        this.deleteTask()
       },
       handleMouseEnter () {
         this.isMouseOver = true
