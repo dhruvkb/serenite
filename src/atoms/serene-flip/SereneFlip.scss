@@ -1,0 +1,35 @@
+@use '~@/styles/tokens/dimensions';
+@use '~@/styles/tokens/durations';
+
+.serene-flip {
+  perspective: 30em;
+
+  .card {
+    transform-style: preserve-3d;
+
+    transition-property: transform;
+    transition-duration: durations.$m;
+
+    .face {
+      backface-visibility: hidden;
+
+      &.back {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        height: 100%;
+        width: 100%;
+        transform: rotateX(180deg);
+      }
+
+      & > * {
+        backface-visibility: hidden;
+      }
+    }
+
+    &.is-flipped {
+      transform: rotateX(180deg);
+    }
+  }
+}
