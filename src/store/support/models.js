@@ -164,4 +164,15 @@ export class Task extends Entity {
       timestampCreated: this.timestampCreated
     }
   }
+
+  /**
+   * Find the label from the given list of labels that appears in the title of
+   * this task. If none is found, return `undefined`.
+   *
+   * @param {Array} allLabels - an array of all the labels present in the app
+   * @return {Label | undefined} the label that is present on the task
+   */
+  label (allLabels) {
+    return allLabels.find(label => this.title.includes(`@${label.name}`))
+  }
 }
