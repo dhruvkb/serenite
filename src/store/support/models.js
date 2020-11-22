@@ -42,7 +42,7 @@ class Entity {
 /**
  * Labels are used to group issues into categories.
  */
-export class Label {
+export class Label extends Entity {
   /**
    * Enum for color names and their hexadecimal codes
    * @enum {string}
@@ -74,16 +74,17 @@ export class Label {
    * Create a new instance of `Label` with the given data.
    *
    * @constructor
-   * @param {string} id - the UUID that uniquely identifies the label
    * @param {string} name - the name of the label
    * @param {string} colorKey - the name of the color assigned to the label
+   * @param {Object} args - consists of `id`, `order` and `timestampCreated`
    */
   constructor ({
-    id = uuid4(),
     name,
-    colorKey = Object.keys(Label.COLOR_CODES)[0]
+    colorKey = Object.keys(Label.COLOR_CODES)[0],
+    ...args
   }) {
-    this.id = id
+    super(args)
+
     this.name = name
     this.colorKey = colorKey
   }
@@ -95,9 +96,12 @@ export class Label {
    */
   get pojo () {
     return {
-      id: this.id,
       name: this.name,
-      colorKey: this.colorKey
+      colorKey: this.colorKey,
+
+      id: this.id,
+      order: this.order,
+      timestampCreated: this.timestampCreated
     }
   }
 
@@ -125,30 +129,24 @@ export class Label {
 /**
  * A task describes a major goal to be accomplished.
  */
-export class Task {
+export class Task extends Entity {
   /**
    * Create a new instance of `Task` with the given data.
    *
    * @constructor
-   * @param {string} id - the UUID that uniquely identifies the task
    * @param {string} title - the title of the task
    * @param {boolean} isComplete - whether the task is checked off
-   * @param {number} order - the position or priority of the task
-   * @param {number} timestampCreated - the timestamp when the task was created
+   * @param {Object} args - consists of `id`, `order` and `timestampCreated`
    */
   constructor ({
-    id = uuid4(),
     title,
     isComplete = false,
-    order = 0,
-    timestampCreated = (new Date()).getTime()
+    ...args
   }) {
-    this.id = id
+    super(args)
+
     this.title = title
     this.isComplete = isComplete
-
-    this.order = order
-    this.timestampCreated = timestampCreated
   }
 
   /**
@@ -158,10 +156,10 @@ export class Task {
    */
   get pojo () {
     return {
-      id: this.id,
       title: this.title,
       isComplete: this.isComplete,
 
+      id: this.id,
       order: this.order,
       timestampCreated: this.timestampCreated
     }

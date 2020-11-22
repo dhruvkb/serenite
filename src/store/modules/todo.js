@@ -10,17 +10,11 @@ const state = {
 const getters = {
   allLabels: state => Object.values(state.labels)
     .map(labelPojo => new Label(labelPojo))
-    .sort((a, b) => a.name.localeCompare(b.name)),
+    .sort((a, b) => a.compare(b)),
 
   allTasks: state => Object.values(state.tasks)
     .map(taskPojo => new Task(taskPojo))
-    .sort((a, b) => {
-      if (a.order !== b.order) {
-        return a.order - b.order
-      } else {
-        return b.timestampCreated - a.timestampCreated
-      }
-    }),
+    .sort((a, b) => a.compare(b)),
   pendingTaskCount: (state, getters) => getters.allTasks
     .filter(task => !task.isComplete).length
 }
