@@ -1,6 +1,43 @@
+import { uuid4 } from '@/utilities/uuid'
+
 import colors from '@/styles/exports/colors.scss'
 
-import { uuid4 } from '@/utilities/uuid'
+class Entity {
+  /**
+   * Create a new instance of `Entity` with the given data.
+   *
+   * @constructor
+   * @param {string} id - the UUID that uniquely identifies the entity
+   * @param {number} order - the position or priority of the entity
+   * @param {number} timestampCreated - the creation timestamp of the entity
+   */
+  constructor ({
+    id = uuid4(),
+    order = 0,
+    timestampCreated = (new Date()).getTime()
+  }) {
+    this.id = id
+    this.order = order
+    this.timestampCreated = timestampCreated
+  }
+
+  /**
+   * Compare this entity to another entity. The outcome is a number, the sign
+   * of which determines the outcome of the comparison. A positive number
+   * indicates that the other entity should succeed this one, a negative number
+   * suggests the opposite and zero implies equality.
+   *
+   * @param {Entity} other - the `Entity` instance to compare with this one
+   * @return {number} a number indicating the order of precedence
+   */
+  compare (other) {
+    if (this.order !== other.order) {
+      return this.order - other.order
+    } else {
+      return other.timestampCreated - this.timestampCreated
+    }
+  }
+}
 
 /**
  * Labels are used to group issues into categories.
