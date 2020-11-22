@@ -11,12 +11,14 @@
     top: 0;
     left: 0;
 
+    color: var(--checkbox-color, inherit);
+
     transition-property: opacity;
     transition-duration: durations.$m;
   }
 
   .box {
-    color: colors.$foreground-dark;
+    color: var(--checkbox-color, #{colors.$foreground-dark});
 
     transition-property: color;
     transition-duration: durations.$m;
@@ -35,7 +37,7 @@
     }
 
     .box {
-      color: inherit;
+      color: var(--checkbox-color, inherit);
     }
   }
 }

@@ -1,5 +1,8 @@
 <template>
-  <div class="task-checkbox" :class="classes">
+  <div
+    class="task-checkbox"
+    :class="classes"
+    :style="styles">
     <SereneIcon
       class="check"
       name="check"
@@ -12,6 +15,8 @@
 </template>
 
 <script>
+  import { Label } from '@/store/support/models'
+
   import SereneIcon from '@/atoms/serene-icon/SereneIcon'
 
   import check from '@/assets/icons/check.svg'
@@ -31,6 +36,12 @@
       }
     },
     props: {
+      /**
+       * the key of the chosen color
+       */
+      color: {
+        type: String
+      },
       /**
        * whether the checkbox is in user focus
        */
@@ -59,6 +70,16 @@
             'is-checked': this.isChecked
           }
         ]
+      },
+      /**
+       * Get the styles to apply on the task checkbox.
+       *
+       * @return {Object} an object of styles to apply on the element
+       */
+      styles () {
+        return {
+          '--checkbox-color': Label.COLOR_CODES[this.color]
+        }
       }
     }
   }
