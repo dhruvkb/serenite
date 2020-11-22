@@ -70,7 +70,7 @@
        * Emit a `'switch'` event with the index of the target tab from the panel
        * as the payload.
        *
-       * @param {number} index - the index of the tab that triggered this handler
+       * @param {number} index - the index of the tab triggering this handler
        */
       handleClick (index) {
         this.$emit('switch', this.options[index])

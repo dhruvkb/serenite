@@ -42,13 +42,17 @@
         return DAYS_OF_WEEK[this.now.dayOfWeek]
       },
       /**
-       * Get the current date in the format `dd mmmm, yyyy` according to the
-       * Wikipedia time coding format. This is equivalent to the Python
-       * `strftime` format `%d %B, %Y`.
+       * Get the current date in the format `d mmmm, yyyy` according to the
+       * Wikipedia time coding format. These components are
+       * - `d`: one-digit month for months below 10
+       * - `mmmm`: month spelled out in full
+       * - `,`: an actual comma
+       * - `yyyy`: four-digit year
+       *
+       * This is equivalent to the Python `strftime` format `%-d %B, %Y`.
        *
        * @return {string} the date in a readable format
        * @see {@link https://strftime.org|Python `strftime` reference}
-       * @see {@link https://en.wikipedia.org/wiki/Date_format_by_country#Table_coding|Wikipedia time coding reference}
        */
       date () {
         const MONTHS = [
@@ -85,7 +89,8 @@
         }
 
         this.setDate() // Set the date now
-        this.looper = setInterval(() => { // Set it to auto-update at regular intervals
+        // Set it to auto-update at regular intervals
+        this.looper = setInterval(() => {
           this.setDate()
         }, this.interval * 60 * 1000)
       },
