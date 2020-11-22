@@ -1,0 +1,10 @@
+.task-view {
+  .title {
+    .word {
+      &.is-label {
+        font-weight: bold;
+        color: var(--view-color);
+      }
+    }
+  }
+}
