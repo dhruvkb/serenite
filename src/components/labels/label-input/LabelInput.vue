@@ -54,6 +54,9 @@
        */
       performChange () {
         if (this.labelName === '') {
+          if (this.isPopulated) {
+            this.labelName = this.label.name
+          }
           return // Do nothing if the field is blank
         }
 

@@ -55,6 +55,9 @@
        */
       performChange () {
         if (this.taskTitle === '') {
+          if (this.isPopulated) {
+            this.taskTitle = this.task.title
+          }
           return // Do nothing if the field is blank
         }
 
