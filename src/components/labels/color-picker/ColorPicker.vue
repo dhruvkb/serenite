@@ -29,7 +29,8 @@
        * the key of the chosen color
        */
       color: {
-        type: String
+        type: String,
+        required: true
       }
     },
     data () {
