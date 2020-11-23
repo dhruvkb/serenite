@@ -21,6 +21,13 @@
     @include control.control;
   }
 
+  .handle,
+  .buttons {
+    padding: dimensions.$m;
+
+    flex-shrink: 0;
+  }
+
   .content,
   .buttons {
     display: flex;
@@ -28,12 +35,22 @@
     align-items: center;
 
     gap: dimensions.$m;
+  }
 
-    padding: dimensions.$m;
+  .handle {
+    color: colors.$foreground-dark;
+
+    cursor: var(--handle-cursor, grab);
   }
 
   .content {
     flex-grow: 1;
+    flex-shrink: 1;
+
+    padding-top: dimensions.$m;
+    padding-bottom: dimensions.$m;
+
+    cursor: pointer;
   }
 
   .buttons {

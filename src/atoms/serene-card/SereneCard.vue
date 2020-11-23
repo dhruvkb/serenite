@@ -2,6 +2,11 @@
   <div
     class="serene-card"
     :class="classes">
+    <SereneIcon
+      class="handle"
+      name="drag"
+      :path="icons.drag"/>
+
     <button
       v-on="$listeners"
       class="content">
@@ -32,6 +37,7 @@
   import SereneButton from '@/atoms/serene-button/SereneButton'
   import SereneIcon from '@/atoms/serene-icon/SereneIcon'
 
+  import drag from '@/assets/icons/drag.svg'
   import edit from '@/assets/icons/edit.svg'
   import trash from '@/assets/icons/trash.svg'
 
@@ -44,6 +50,7 @@
     data () {
       return {
         icons: {
+          drag,
           edit,
           trash
         }
