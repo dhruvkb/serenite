@@ -113,7 +113,7 @@
       wordClasses (word) {
         return [
           {
-            'is-label': this.isLabelled && word === `@${this.label.name}`
+            'is-label': this.isLabelled && word === `#${this.label.name}`
           }
         ]
       },

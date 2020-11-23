@@ -174,6 +174,6 @@ export class Task extends Entity {
    */
   label (allLabels) {
     const words = this.title.split(' ')
-    return allLabels.find(label => words.includes(`@${label.name}`))
+    return allLabels.find(label => words.includes(`#${label.name}`))
   }
 }
