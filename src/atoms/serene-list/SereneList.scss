@@ -1,0 +1,20 @@
+@use '~@/styles/tokens/colors';
+@use '~@/styles/tokens/dimensions';
+
+@use '~@/styles/mixins/motion';
+
+.serene-list {
+  @include motion.fade;
+
+  .no-list {
+    text-align: center;
+
+    color: colors.$foreground-dark;
+
+    margin-top: dimensions.$l;
+  }
+
+  .is-dragging {
+    --handle-cursor: grabbing;
+  }
+}
