@@ -8,12 +8,14 @@ const state = {
 }
 
 const getters = {
-  allLabels: state => Object.values(state.labels)
-    .map(labelPojo => new Label(labelPojo))
+  labels: state => Object.values(state.labels)
+    .map(labelPojo => new Label(labelPojo)),
+  allLabels: (state, getters) => getters.labels
     .sort((a, b) => a.compare(b)),
 
-  allTasks: state => Object.values(state.tasks)
-    .map(taskPojo => new Task(taskPojo))
+  tasks: state => Object.values(state.tasks)
+    .map(taskPojo => new Task(taskPojo)),
+  allTasks: (state, getters) => getters.tasks
     .sort((a, b) => a.compare(b)),
   pendingTaskCount: (state, getters) => getters.allTasks
     .filter(task => !task.isComplete).length
@@ -61,7 +63,9 @@ const mutations = {
 
 const actions = {
   updateTasks ({ commit, getters }, payload) {
-    commit(payload.mutation, payload.data)
+    const { mutation, data } = payload
+
+    commit(mutation, data)
 
     const count = getters.pendingTaskCount
     const text = count ? count.toString() : null
