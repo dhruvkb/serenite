@@ -173,6 +173,7 @@ export class Task extends Entity {
    * @return {Label | undefined} the label that is present on the task
    */
   label (allLabels) {
-    return allLabels.find(label => this.title.includes(`@${label.name}`))
+    const words = this.title.split(' ')
+    return allLabels.find(label => words.includes(`@${label.name}`))
   }
 }
