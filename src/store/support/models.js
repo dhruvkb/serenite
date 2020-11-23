@@ -51,7 +51,7 @@ export class Label extends Entity {
     grape: colors.labelGrape,
     violet: colors.labelViolet,
     sky: colors.labelSky,
-    green: colors.labelGreen,
+    lime: colors.labelLime,
     salmon: colors.labelSalmon,
     orange: colors.labelOrange,
     berry: colors.labelBerry,
