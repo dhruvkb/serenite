@@ -21,7 +21,7 @@
        * @return {number} the number of labels defined
        */
       labelCount () {
-        return this.allLabels.length
+        return this.labels.length
       },
       /**
        * Get a message describing the count of the currently described labels,
@@ -40,7 +40,7 @@
       },
 
       ...mapGetters('todo', [
-        'allLabels'
+        'labels'
       ])
     }
   }

@@ -169,11 +169,11 @@ export class Task extends Entity {
    * Find the label from the given list of labels that appears in the title of
    * this task. If none is found, return `undefined`.
    *
-   * @param {Array} allLabels - an array of all the labels present in the app
+   * @param {Array} labels - an array of all the labels present in the app
    * @return {Label | undefined} the label that is present on the task
    */
-  label (allLabels) {
+  label (labels) {
     const words = this.title.split(' ')
-    return allLabels.find(label => words.includes(`#${label.name}`))
+    return labels.find(label => words.includes(`#${label.name}`))
   }
 }

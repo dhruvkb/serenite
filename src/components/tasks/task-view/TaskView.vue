@@ -97,11 +97,11 @@
        * @return {Label} the label associated with this task
        */
       label () {
-        return this.task.label(this.allLabels)
+        return this.task.label(this.labels)
       },
 
       ...mapGetters('todo', [
-        'allLabels'
+        'labels'
       ])
     },
     methods: {
