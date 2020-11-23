@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import { mapMutations } from 'vuex'
+  import { mapActions, mapMutations } from 'vuex'
 
   import { Label } from '@/store/support/models'
 
@@ -67,6 +67,10 @@
         }
         if (this.isPopulated) {
           data.labelAttrs.id = this.label.id
+          this.renameLabel({
+            oldName: this.label.name,
+            newName: this.labelName
+          })
           this.editLabel(data) // Edit the given label
         } else {
           this.addLabel(data) // Create a new label
@@ -85,6 +89,9 @@
       ...mapMutations('todo', [
         'addLabel',
         'editLabel'
+      ]),
+      ...mapActions('todo', [
+        'renameLabel'
       ])
     },
     mounted () {

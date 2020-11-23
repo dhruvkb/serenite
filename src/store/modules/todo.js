@@ -17,7 +17,10 @@ const getters = {
     .map(taskPojo => new Task(taskPojo)),
   allTasks: (state, getters) => getters.tasks
     .sort((a, b) => a.compare(b)),
-  pendingTaskCount: (state, getters) => getters.allTasks
+
+  tasksWithLabel: (state, getters) => labelName => getters.tasks
+    .filter(task => task.label(getters.labels)?.name === labelName),
+  pendingTaskCount: (state, getters) => getters.tasks
     .filter(task => !task.isComplete).length
 }
 
@@ -70,6 +73,19 @@ const actions = {
     const count = getters.pendingTaskCount
     const text = count ? count.toString() : null
     browser.browserAction.setBadgeText({ text: text })
+  },
+  renameLabel ({ commit, getters }, payload) {
+    const { oldName, newName } = payload
+
+    const tasks = getters.tasksWithLabel(oldName)
+    tasks.forEach(task => {
+      commit('editTask', {
+        taskAttrs: {
+          id: task.id,
+          title: task.title.replace(`#${oldName}`, `#${newName}`)
+        }
+      })
+    })
   }
 }
 
