@@ -2,7 +2,7 @@
   <SereneCard
     @edit="handleEdit"
     @delete="handleDelete">
-    <ColorPicker v-model="color"/>
+    <ColorPicker v-model="colorKeyWrapped"/>
     <span class="name">
       {{ label.name }}
     </span>
@@ -36,7 +36,7 @@
        * Get the color key associated with the label. This wrapper also enables
        * `v-model` to set the value via a Vuex mutation.
        */
-      color: {
+      colorKeyWrapped: {
         get () {
           return this.label.colorKey
         },
@@ -68,9 +68,6 @@
         })
       },
 
-      handlePick (colorKey) {
-        this.updateLabelColorKey(colorKey)
-      },
       handleEdit () {
         this.$emit('edit')
       },
