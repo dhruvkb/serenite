@@ -1,3 +1,6 @@
+> [!CAUTION]
+> This app is not maintained. Please do not use it.
+
 # Serenite
 
 Serenite is a minimal to-do list that replaces your new tab page.
